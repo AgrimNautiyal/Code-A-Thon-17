@@ -1,0 +1,14 @@
+a=input()
+temp=""
+for i in range(len(a)):
+    if(a[i]=='?'):
+        if(a[i+1]!='a' and a[i-1]!='a'):
+            if(temp+'a'<temp+'b'):
+                temp=temp+'a' 
+            else:
+                temp=temp+'b'
+        else:
+            temp=temp+'b'
+    else:
+        temp=temp+a[i]
+print(temp)
