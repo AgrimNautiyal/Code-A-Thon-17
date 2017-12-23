@@ -1,0 +1,36 @@
+a=input().split(" ")
+n=int(a[0])
+if(n>=1 and n<=1000):
+    t=int(a[1])
+    if(t>=1 and t<=n):
+        names=["" for i in range(n)]
+        quo=[0 for i in range(n)]
+        select=["" for i in range(t)]
+        for i in range(n):
+            a2=input().split(" ")
+            names[i]= a2[0]
+            quo[i]=int(a2[1])
+        #all inputs are completed 
+        for i in range (n):
+            for j in range(n-1):
+                if(quo[j]<quo[j+1]):
+                    temp=quo[j]
+                    quo[j]=quo[j+1]
+                    quo[j+1]=temp
+                    temp2=names[j]
+                    names[j]=names[j+1]
+                    names[j+1]= temp2
+                 
+                    
+                   
+        for i in range(t):
+            for j in range(t-1):
+                if(quo[j]==quo[j+1]):
+                    if(names[j]>names[j+1]):
+                        temp=names[j]
+                        names[j]=names[j+1]
+                        names[j+1]=temp
+        for i in range(t):
+            select[i]=names[i]
+        for i in range(t):
+            print(select[i])
