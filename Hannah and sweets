@@ -1,0 +1,72 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <climits>
+using namespace std;
+
+int input[10000];
+int input1[10000];
+int dp[4][1001];
+int parent[4][1001];
+int coins[4]={0,1,2,5};
+int operation=0;
+int main() {
+    int t,n,i,j,count,sum,diff,prevdiff,min;
+    for(i=1;i<1001;i++)
+    {
+        dp[0][i]=INT_MAX;
+        parent[0][i]=INT_MAX;
+    }
+    for(i=0;i<4;i++)
+    {
+        dp[i][0]=0;
+        parent[i][0]=-1;
+    }
+    for(i=1;i<1001;i++){
+        for(j=1;j<4;j++){
+            dp[j][i]=dp[j-1][i];
+            parent[j][i]=parent[j-1][i];
+            if(i>=coins[j]&&dp[3][i-coins[j]]<INT_MAX){
+
+                if(dp[3][i-coins[j]]+1<dp[j][i]){
+                    dp[j][i]=dp[3][i-coins[j]]+1;
+                    parent[j][i]=j;
+                }
+            }
+        }
+    }
+    cin>>t;
+    while(t>0){
+        cin>>n;
+        min=INT_MAX;
+        for(i=0;i<n;i++)
+        {
+            cin>>input[i];
+            if(input[i]<min){
+                min=input[i];
+            }
+            //input1[i]=input[i];
+        }
+
+        //sort(input,input+n);
+
+        count=0;
+        sum=0;
+
+        for(i=0;i<n;i++){
+            count=count+dp[3][input[i]-min];
+        }
+
+        cout<<count<<endl;
+        t--;
+    }
+    /*
+    for(i=1;i<1001;i++){
+        if(dp[3][i]!=minCoins(i))
+            cout<<dp[3][i]<<" "<<minCoins(i)<<endl;
+    }
+    */
+    return 0;
+}
