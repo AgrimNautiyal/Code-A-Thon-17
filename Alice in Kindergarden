@@ -1,0 +1,13 @@
+n=int(input())
+r=[0 for i in range(n)]
+for i in range(n):
+    r[i]= int(input())
+candies=[1 for i in range(n)]
+for i in range(n-1):
+    
+    if(r[i]>r[i+1]):
+        candies[i]+=1
+sum=0
+for i in range(n):
+    sum+=candies[i]
+print(sum+1)
