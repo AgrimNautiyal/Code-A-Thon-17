@@ -1,0 +1,30 @@
+t=int(input())
+for z in range(t):
+    b=input().split(" ")
+    n=int(b[0])
+    h=int(b[1])
+    l=input().split(" ")
+    for w in range(n):
+        l[w]=int(l[w])
+    for i in range(h):
+        l1=[0 for w in range(n)]
+        if (l[1]==1):
+            l1[0]=1
+        else:
+            l1[0]=0
+        if (l[n-2]==1):
+            l1[n-1]=1
+        else:
+            l1[n-1]=0    
+        for j in range(1,n-1):
+            if(l[j-1]==1 and l[j+1]==1):
+                l1[j]=1
+            else:
+                l1[j]=0
+        l=l1
+    for i in range(n):
+        print(l[i],end=" ")
+    print()
+    
+    
+    
