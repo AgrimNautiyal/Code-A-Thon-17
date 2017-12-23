@@ -1,0 +1,23 @@
+t=int(input())
+for z in range(t):
+    f=[]
+    a=[]
+    sum=0
+    happ=[]
+    n=int(input())
+    for i in range(n):
+        par=input().split(" ")
+        f.append(int(par[0]))
+        a.append(int(par[1]))
+    for i in range(n-1):
+        sum=0
+        for j in range(i+1,n):
+            sum=f[i]+f[j]
+            for k in range(n):
+                if(k!=i and k!=j):
+                    sum-=a[k]
+            happ.append(sum)
+    happ.sort(reverse=True)
+    print(happ[0])
+  
+
