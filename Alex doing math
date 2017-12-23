@@ -1,0 +1,10 @@
+n=int(input())
+l=input().split(" ")
+p=1
+num=1
+for i in range(n):
+    l[i]=int(l[i])
+for i in range(n):
+    p=p*l[i]
+num=int(p**(1/n))
+print(num+1)
